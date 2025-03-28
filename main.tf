@@ -52,14 +52,14 @@ locals {
 resource "local_file" "inventory" {
   count = var.architecture == "replication" ? 1 : 0
   depends_on = [module.redis_instance]
-  content = templatefile("./inventory.yml.tpl", {
+  content = templatefile("${path.module}/inventory.yml.tpl", {
     primary_ip = local.primary_ip
     replica_ips = local.replica_ips
     sentinel_ips = local.sentinel_ips
     ssh_user = local.ssh_user
     ssh_password = local.ssh_password
   })
-  filename = "./inventory.yml"
+  filename = "${path.module}/inventory.yml"
 }
 
 resource "terraform_data" "check_host" {
@@ -115,7 +115,7 @@ resource "terraform_data" "configure_redis_primary" {
   }
 
   provisioner "file" {
-    source      = "./inventory.yml"
+    source      = "${path.module}/inventory.yml"
     destination = "/home/${local.ssh_user}/inventory.yml"
     on_failure = fail
   }
