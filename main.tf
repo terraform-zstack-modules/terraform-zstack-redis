@@ -39,7 +39,7 @@ module "redis_instance" {
 
 # 获取所有节点IP地址
 locals {
-  node_ips = [for instance in module.redis_instance : instance_ips]
+  node_ips = flatten([for i in range(local.node_count) : module.redis_instance[i].instance_ips])
   primary_ip = local.node_ips[0]
  # replica_ips = slice(local.node_ips, 1, 3)
   replica_ips = var.architecture == "replication" ? slice(local.node_ips, 1, length(local.node_ips)) : []
@@ -113,7 +113,7 @@ resource "terraform_data" "configure_redis_primary" {
     host     = local.primary_ip
     timeout  = "5m"
   }
-  
+
   provisioner "file" {
     source      = "./inventory.yml"
     destination = "/home/${local.ssh_user}/inventory.yml"
