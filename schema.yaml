@@ -86,6 +86,9 @@ components:
           description: |
             Specify the deployment architecture, select from standalone or replication.
           default: replication
+          enum:
+          - standalone
+          - replication
           x-walrus-ui:
             group: Basic
             order: 11

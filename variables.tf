@@ -64,13 +64,13 @@ variable "instance_offering_name" {
 variable "ssh_user" {
   description = "SSH username for remote access"
   type        = string
-  default     = "root"
+  default     = "zstack"
 }
 
 variable "ssh_password" {
   description = "SSH password for remote access"
   type        = string
-  default     = "password"
+  default     = "ZStack@123"
   sensitive   = true
 }
 
