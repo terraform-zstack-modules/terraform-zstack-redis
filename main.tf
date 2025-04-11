@@ -47,6 +47,7 @@ locals {
  # sentinel_ips = local.node_ips  
   ssh_user = var.ssh_user
   ssh_password = var.ssh_password
+  redis_password = var.redis_password
 }
 
 resource "local_file" "inventory" {
@@ -58,6 +59,7 @@ resource "local_file" "inventory" {
     sentinel_ips = local.sentinel_ips
     ssh_user = local.ssh_user
     ssh_password = local.ssh_password
+    redis_password = local.redis_password
   })
   filename = "${path.module}/inventory.yml"
 }
