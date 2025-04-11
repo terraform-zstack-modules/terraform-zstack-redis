@@ -7,7 +7,7 @@ components:
       type: object
       properties:
         image_name:
-          title: Image Name
+          title: 镜像名
           type: string
           description: Name for the log server image
           default: redis-by-terraform
@@ -15,7 +15,7 @@ components:
             group: Basic
             order: 2
         image_url:
-          title: Image Url
+          title: 镜像 Url
           type: string
           description: URL to download the image from
           default: http://minio.zstack.io:9000/packer/redis-by-packer-image-compressed.qcow2
@@ -23,7 +23,7 @@ components:
             group: Basic
             order: 3
         backup_storage_name:
-          title: Backup Storage Name
+          title: 镜像服务器
           type: string
           description: Name of the backup storage to use
           default: bs
@@ -31,7 +31,7 @@ components:
             group: Basic
             order: 4
         instance_name:
-          title: Instance Name
+          title: 云主机名称
           type: string
           description: Name for the cas server instance
           default: redis
@@ -39,7 +39,7 @@ components:
             group: Basic
             order: 5
         l3_network_name:
-          title: L3 Network Name
+          title: 三层网络名称
           type: string
           description: Name of the L3 network to use
           default: test
@@ -47,7 +47,7 @@ components:
             group: Basic
             order: 6
         instance_offering_name:
-          title: Instance Offering Name
+          title: 计算规格名称
           type: string
           description: Name of the instance offering to use
           default: min
@@ -59,6 +59,7 @@ components:
           type: string
           description: SSH username for remote access
           default: root
+          readOnly: true
           x-walrus-ui:
             group: Basic
             order: 8
@@ -68,12 +69,22 @@ components:
           description: SSH password for remote access
           default: password
           format: password
-          writeOnly: true
+          readOnly: true
           x-walrus-ui:
             group: Basic
             order: 9
+        redis_password:
+          title: Redis Password
+          type: string
+          description: SSH password for remote access
+          default: zstack.redis.password
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 10
         non_production:
-          title: Non Production
+          title: 是否为生产环境
           type: boolean
           description: Whether to run in non-production mode
           default: false
@@ -81,7 +92,7 @@ components:
             group: Basic
             order: 10
         architecture:
-          title: Architecture
+          title: Redis架构
           type: string
           description: |
             Specify the deployment architecture, select from standalone or replication.
@@ -92,6 +103,13 @@ components:
           x-walrus-ui:
             group: Basic
             order: 11
+        expunge:
+          title: 是否彻底删除
+          type: boolean
+          default: true
+          x-walrus-ui:
+            group: Basic
+            order: 13
       x-walrus-ui:
         groupOrder:
         - Basic

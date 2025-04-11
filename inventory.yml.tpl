@@ -29,7 +29,7 @@ all:
           ansible_sudo_pass: ${ssh_password}
 %{ endfor ~}
   vars:
-    redis_password: "zstack.redis.password"
+    redis_password: ${redis_password}
     redis_port: 6379
     ansible_connection: ssh
     ansible_ssh_common_args: '-o StrictHostKeyChecking=no'

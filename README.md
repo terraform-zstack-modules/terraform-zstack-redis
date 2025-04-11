@@ -17,8 +17,8 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_redis_image"></a> [redis\_image](#module\_redis\_image) | git::https://github.com/terraform-zstack-modules/terraform-zstack-image.git | n/a |
-| <a name="module_redis_instance"></a> [redis\_instance](#module\_redis\_instance) | git::https://github.com/chijiajian/terraform-zstack-instance.git | n/a |
+| <a name="module_redis_image"></a> [redis\_image](#module\_redis\_image) | git::http://172.20.14.17/jiajian.chi/terraform-zstack-image.git | v1.1.1 |
+| <a name="module_redis_instance"></a> [redis\_instance](#module\_redis\_instance) | git::http://172.20.14.17/jiajian.chi/terraform-zstack-instance.git | v1.1.1 |
 
 ## Resources
 
@@ -36,14 +36,16 @@
 | <a name="input_architecture"></a> [architecture](#input\_architecture) | Specify the deployment architecture, select from standalone or replication. | `string` | `"replication"` | no |
 | <a name="input_backup_storage_name"></a> [backup\_storage\_name](#input\_backup\_storage\_name) | Name of the backup storage to use | `string` | `"bs"` | no |
 | <a name="input_context"></a> [context](#input\_context) | Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.<br/><br/>Examples:<pre>context:<br/>  project:<br/>    name: string<br/>    id: string<br/>  environment:<br/>    name: string<br/>    id: string<br/>  resource:<br/>    name: string<br/>    id: string</pre> | `map(any)` | `{}` | no |
+| <a name="input_expunge"></a> [expunge](#input\_expunge) | n/a | `bool` | `true` | no |
 | <a name="input_image_name"></a> [image\_name](#input\_image\_name) | Name for the log server image | `string` | `"redis-by-terraform"` | no |
 | <a name="input_image_url"></a> [image\_url](#input\_image\_url) | URL to download the image from | `string` | `"http://minio.zstack.io:9000/packer/redis-by-packer-image-compressed.qcow2"` | no |
 | <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | Name for the cas server instance | `string` | `"redis"` | no |
 | <a name="input_instance_offering_name"></a> [instance\_offering\_name](#input\_instance\_offering\_name) | Name of the instance offering to use | `string` | `"min"` | no |
 | <a name="input_l3_network_name"></a> [l3\_network\_name](#input\_l3\_network\_name) | Name of the L3 network to use | `string` | `"test"` | no |
-| <a name="input_non_production"></a> [non\_production](#input\_non\_production) | Whether to run in non-production mode | `bool` | `false` | no |
-| <a name="input_ssh_password"></a> [ssh\_password](#input\_ssh\_password) | SSH password for remote access | `string` | `"password"` | no |
-| <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | SSH username for remote access | `string` | `"root"` | no |
+| <a name="input_non_production"></a> [non\_production](#input\_non\_production) | Whether to run in non-production mode | `bool` | `true` | no |
+| <a name="input_redis_password"></a> [redis\_password](#input\_redis\_password) | SSH password for remote access | `string` | `"zstack.redis.password"` | no |
+| <a name="input_ssh_password"></a> [ssh\_password](#input\_ssh\_password) | SSH password for remote access | `string` | `"ZStack@123"` | no |
+| <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | SSH username for remote access | `string` | `"zstack"` | no |
 
 ## Outputs
 

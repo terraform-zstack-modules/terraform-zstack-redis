@@ -10,7 +10,7 @@ locals {
 
 
 module "redis_image" {
-  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-image.git"
+  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-image.git?ref=v1.1.1"
 
   create_image        = true
   image_name          = var.image_name
@@ -19,13 +19,13 @@ module "redis_image" {
   platform           = "Linux"
   format             = "qcow2"
   architecture       = "x86_64"
-
+  expunge      = var.expunge
   backup_storage_name = var.backup_storage_name
 }
 
 # 创建虚拟机实例
 module "redis_instance" {
-  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-instance.git"
+  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-instance.git?ref=v1.1.1"
 
   count = local.node_count
   name                  = "${var.instance_name}-${count.index + 1}"
@@ -34,7 +34,7 @@ module "redis_instance" {
   image_uuid            = module.redis_image.image_uuid
   l3_network_name       = var.l3_network_name
   instance_offering_name = var.instance_offering_name
-
+  expunge      = var.expunge
 }
 
 # 获取所有节点IP地址

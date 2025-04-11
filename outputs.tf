@@ -53,3 +53,10 @@ output "deployment_mode" {
   value = var.architecture
   description = "Redis部署模式 (standalone 或 replication)"
 }
+
+output "ports" {
+  value = {
+    redis_port = "6379"
+    sentinel_port = "5666"
+  }
+}

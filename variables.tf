@@ -74,10 +74,17 @@ variable "ssh_password" {
   sensitive   = true
 }
 
+variable "redis_password" {
+  description = "SSH password for remote access"
+  type        = string
+  default     = "zstack.redis.password"
+  sensitive   = true
+}
+
 variable "non_production" {
   description = "Whether to run in non-production mode"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "architecture" {
@@ -90,4 +97,9 @@ EOF
     condition     = var.architecture == "" || contains(["standalone", "replication"], var.architecture)
     error_message = "Invalid architecture"
   }
+}
+
+variable "expunge" {
+  type  = bool
+  default = true
 }
