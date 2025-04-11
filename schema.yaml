@@ -58,7 +58,7 @@ components:
           title: Ssh User
           type: string
           description: SSH username for remote access
-          default: root
+          default: zstack
           readOnly: true
           x-walrus-ui:
             group: Basic
@@ -67,7 +67,7 @@ components:
           title: Ssh Password
           type: string
           description: SSH password for remote access
-          default: password
+          default: ZStack@123
           format: password
           readOnly: true
           x-walrus-ui:
