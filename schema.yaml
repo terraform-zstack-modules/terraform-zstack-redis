@@ -58,7 +58,7 @@ components:
           title: Ssh User
           type: string
           description: SSH username for remote access
-          default: root
+          default: zstack
           readOnly: true
           x-walrus-ui:
             group: Basic
@@ -67,7 +67,7 @@ components:
           title: Ssh Password
           type: string
           description: SSH password for remote access
-          default: password
+          default: ZStack@123
           format: password
           readOnly: true
           x-walrus-ui:
@@ -84,10 +84,10 @@ components:
             group: Basic
             order: 10
         non_production:
-          title: 是否为生产环境
+          title: 是否为POC环境
           type: boolean
-          description: Whether to run in non-production mode
-          default: false
+          description: 是否为POC环境，如果为否需要32G内存，请注意选择
+          default: true
           x-walrus-ui:
             group: Basic
             order: 10
